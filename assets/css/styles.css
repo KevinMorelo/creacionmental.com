@@ -149,7 +149,7 @@ body {
 @media (max-width: 640px) {
   .hero::before {
     background-position: center top;
-    background-size: 185% auto;
+    background-size: 230% auto;
   }
 }
 

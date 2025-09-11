@@ -3,364 +3,482 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CREACIÓN MENTAL | Consultoría en Salud Mental</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CREACIÓN MENTAL · Consultoría en Salud Mental</title>
   <meta name="description"
-    content="Consultoría y acompañamiento psicológico en Colombia: promoción de la salud mental, talleres, capacitaciones y prevención de riesgos psicosociales." />
-  <meta name="theme-color" content="#2A3D66" />
+    content="Consultoría y acompañamiento psicológico: promoción de la salud mental, capacitaciones y prevención de riesgos psicosociales." />
+  <meta name="theme-color" content="#915FF5" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <!-- Reemplaza el favicon por tu logo -->
-  <link rel="icon" href="/assets/img/creacionmental-favicon.png" type="image/png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="CREACIÓN MENTAL | Consultoría en Salud Mental" />
-  <meta property="og:description"
-    content="Charlas, talleres y consultoría psicológica para promover el autocuidado, la resiliencia y el bienestar integral." />
-  <meta property="og:image" content="/assets/img/og-creacionmental.jpg" />
-  <meta property="og:url" content="https://www.tu-dominio.com/" />
-  <meta name="robots" content="index,follow" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/img/CMMEDIA.png" type="image/png" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<!-- Botón WhatsApp -->
-<a href="https://wa.me/573045223592" class="whatsapp-float" target="_blank" aria-label="Chat en WhatsApp">
-  <img src="/assets/img/wapp.png" alt="WhatsApp" />
-</a>
-
-<!-- Modal de proyectos (no usado por ahora, se deja por si presentas casos de éxito) -->
-<div id="project-modal" class="pmodal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="pmodal__overlay" data-close></div>
-  <div class="pmodal__dialog" role="document">
-    <button class="pmodal__close" aria-label="Cerrar" data-close>✕</button>
-    <div class="pmodal__grid">
-      <div class="pmodal__media">
-        <img id="pm-img" alt="" />
-      </div>
-      <div class="pmodal__content">
-        <h3 id="pm-title"></h3>
-        <p id="pm-subtitle" class="pm-subtitle"></p>
-        <p id="pm-desc" class="pm-desc"></p>
-        <ul id="pm-tags" class="pm-tags"></ul>
-        <div class="pm-cta">
-          <a class="btn btn-primary" data-target="contacto" href="#">Contáctanos</a>
-          <a class="btn btn-ghost" data-target="servicios" href="#">Ver servicios</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="nav-link" data-target="inicio" aria-label="Ir al inicio">
-        <!-- Logo principal (reemplaza la ruta por tu archivo) -->
-        <img src="/assets/img/CM BLANCO.png" alt="CREACIÓN MENTAL" class="logo-mark" />
+  <header class="site-header" role="banner">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="CREACIÓN MENTAL — inicio">
+        <img src="assets/img/CM BLANCO.png" alt="CREACIÓN MENTAL" width="156" height="44" />
       </a>
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <span class="menu-icon" aria-hidden="true"></span>
-      </button>
-      <nav class="site-nav" id="primaryNav">
-        <ul>
-          <li>
-            <a class="nav-link" data-target="inicio" href="#">Inicio</a>
-          </li>
-          <li>
-            <a class="nav-link" data-target="nosotros" href="#">Nosotros</a>
-          </li>
-          <li>
-            <a class="nav-link" data-target="valores" href="#">Valores</a>
-          </li>
-          <li>
-            <a class="nav-link" data-target="servicios" href="#">Servicios</a>
-          </li>
-          <li>
-            <a class="nav-link" data-target="contacto" href="#">Contacto</a>
-          </li>
-        </ul>
+
+      <nav class="nav" id="primaryNav" aria-label="Principal">
+        <a href="#inicio" class="nav__link">Inicio</a>
+        <a href="#nosotros" class="nav__link">Nosotros</a>
+        <a href="#valores" class="nav__link">Valores</a>
+        <a href="#servicios" class="nav__link">Servicios</a>
+        <a href="#equipo" class="nav__link">Equipo</a>
+        <a href="#contacto" class="nav__link">Contacto</a>
       </nav>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section id="inicio" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p>
-            En <strong>CREACIÓN MENTAL</strong> acompañamos a personas,
-            comunidades y entidades en la promoción de la salud mental, el
-            bienestar integral y la prevención de riesgos psicosociales.
-            Diseñamos charlas, capacitaciones y programas personalizados con
-            enfoque humano, pedagógico y participativo.
-          </p>
-          <p id="p2">"Transformar pensamientos, crear mentes sanas"</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" data-target="contacto" href="#">Agendar asesoría</a>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1>Transformar pensamientos,<br>crear mentes sanas</h1>
+          <p class="lead"> En <strong>CREACIÓN MENTAL</strong> te brindamos acompañamiento 
+            en salud mental, para promover y prevenir riesgos psicosociales 
+            en la cotidianidad de personas, comunidades y organizaciones. 
+            Diseñamos charlas, capacitaciones y programas personalizados con 
+            un enfoque humano, pedagógico y participativo. Un espacio creado para ti.</p>
+          <div class="cta">
+            <a class="btn btn--primary" href="#contacto">Agendar asesoría</a>
+            <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
           </div>
         </div>
-        <div class="hero-media" role="img" aria-label="Ilustración de bienestar y salud mental"></div>
+
+        <aside class="hero__aside" aria-label="Nuestros diferenciales">
+          <h3>¿Por qué CREACIÓN MENTAL?</h3>
+          <ul class="checks">
+            <li>Enfoque humano y participativo</li>
+            <li>Capacitaciones y programas a medida</li>
+            <li>Prevención y bienestar basados en evidencia</li>
+          </ul>
+        </aside>
       </div>
     </section>
-
-    <!-- NOSOTROS + VALORES -->
-    <section id="nosotros" class="values">
-      <div class="container">
-        <h2>¿Quiénes somos?</h2>
-        <p style="
-              text-align: center;
-              max-width: 860px;
-              margin: 0 auto 18px;
-              color: #fff;
-            ">
-          En <strong>CREACIÓN MENTAL</strong>Somos un equipo especializado en
-          Psicología de la salud, enfocados en la promoción de la salud
-          mental, el bienestar integral y la prevención de riesgos
-          psicosociales. Nuestro objetivo es brindar a las entidades
-          herramientas necesarias, prácticas y actualizadas para fortalecer la
-          salud mental.
-        </p>
-
-        <div class="about-grid">
-          <article class="card">
-            <h3>Misión</h3>
-            <p>
-              Brindar servicios de consultoría y acompañamiento psicológico
-              orientados a la promoción de la salud mental, el bienestar
-              integral y la prevención de riesgos psicosociales. Desde un
-              enfoque humano, pedagógico y participativo, ofrecemos charlas,
-              capacitaciones y programas personalizados que fortalecen el
-              autocuidado, las relaciones sanas y la resiliencia en personas,
-              comunidades y entidades, contribuyendo a una vida más consciente
-              y equilibrada.
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="about section">
+      <div class="container about__inner">
+        <div class="about__grid">
+          <div class="about__copy">
+            <h2>Psicología de la Salud con enfoque humano y basado en evidencia</h2>
+            <p class="about__lead">
+              En <strong>CREACIÓN MENTAL</strong> Somos un equipo especializado 
+              en Psicología de la salud, enfocados en la promoción de la salud 
+              mental, el bienestar integral y la prevención de riesgos 
+              psicosociales. Nuestro objetivo es brindar a las entidades 
+              herramientas necesarias, prácticas y actualizadas para fortalecer 
+              la salud mental.
             </p>
-          </article>
-          <article class="card">
-            <h3>Visión</h3>
-            <p>
-              Ser una consultoría psicológica referente en el cuidado de la
-              salud mental en Colombia, reconocida por ofrecer acompañamiento
-              humano, innovador y basado en evidencia, que inspire a las
-              personas y entidades a construir relaciones sanas, resilientes y
-              conscientes, generando un impacto positivo en el bienestar
-              integral y la productividad social.
-            </p>
-          </article>
+          </div>
+          <figure class="about__media">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+              alt="Equipo facilitando una sesión de bienestar" loading="lazy" />
+          </figure>
+          <div class="about__mv">
+            <article class="mv-card">
+              <div>
+                <h3>Misión</h3>
+                <p>
+                  Brindar servicios de consultoría y acompañamiento psicológico 
+                  orientados a la promoción de la salud mental, el bienestar 
+                  integral y la prevención de riesgos psicosociales. Desde un 
+                  enfoque humano, pedagógico y participativo, ofrecemos charlas, 
+                  capacitaciones y programas personalizados que fortalecen el 
+                  autocuidado, las relaciones sanas y la resiliencia en personas, 
+                  comunidades y entidades, contribuyendo a una vida más consciente y equilibrada.
+                </p>
+              </div>
+            </article>
+
+            <article class="mv-card">
+              <div>
+                <h3>Visión</h3>
+                <p>
+                  Ser una consultoría psicológica referente en el cuidado de la 
+                  salud mental en Colombia, reconocida por ofrecer acompañamiento 
+                  humano, innovador y basado en evidencia, que inspire a las 
+                  personas y entidades a construir relaciones sanas, resilientes 
+                  y conscientes, generando un impacto positivo en el bienestar 
+                  integral y la productividad social.
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- VALORES -->
-    <section id="valores" class="valores-section">
-      <div class="container">
-        <h2>Nuestros Valores</h2>
-        <p class="valores-intro">
-          Principios que guían nuestro acompañamiento y nos permiten generar confianza, bienestar y transformación.
-        </p>
 
-        <div class="valores-grid">
-          <article class="valor-card">
-            <div class="valor-icon">🤝</div>
+    <!-- <section id="valores" class="section values">
+      <div class="container">
+        <header class="section__head">
+          <h2>Nuestros valores</h2>
+          <p class="section__subtitle">Principios que guían nuestro trabajo.</p>
+        </header>
+
+        <div class="grid grid--3">
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-empatia" />
+              </svg>
+            </div>
             <h3>Empatía</h3>
             <p>Escuchar y comprender desde el respeto, valorando las necesidades de cada persona y entidad.</p>
           </article>
-
-          <article class="valor-card">
-            <div class="valor-icon">🌿</div>
-            <h3>Bienestar Integral</h3>
-            <p>Promover la armonía entre mente, cuerpo y entorno como base de una vida plena.</p>
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-bienestar" />
+              </svg>
+            </div>
+            <h3>Bienestar integral</h3>
+            <p>Armonía entre mente, cuerpo y entorno como base de una vida plena.</p>
           </article>
-
-          <article class="valor-card">
-            <div class="valor-icon">🔒</div>
-            <h3>Confidencialidad y Ética</h3>
-            <p>Brindar un acompañamiento seguro, profesional y ético en cada proceso.</p>
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-confidencialidad" />
+              </svg>
+            </div>
+            <h3>Confidencialidad y ética</h3>
+            <p>Acompañamiento seguro, profesional y ético en cada proceso.</p>
           </article>
-
-          <article class="valor-card">
-            <div class="valor-icon">💡</div>
-            <h3>Innovación Psicosocial</h3>
-            <p>Implementar herramientas actuales, creativas y adaptadas a cada contexto.</p>
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-innovacion" />
+              </svg>
+            </div>
+            <h3>Innovación psicosocial</h3>
+            <p>Herramientas actuales, creativas y adaptadas a cada contexto.</p>
           </article>
-
-          <article class="valor-card">
-            <div class="valor-icon">🌱</div>
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-resiliencia" />
+              </svg>
+            </div>
             <h3>Resiliencia</h3>
-            <p>Fortalecer la capacidad de afrontar y superar las adversidades con aprendizaje y crecimiento.</p>
+            <p>Afrontar y superar adversidades con aprendizaje y crecimiento.</p>
           </article>
-
-          <article class="valor-card">
-            <div class="valor-icon">🤲</div>
+          <article class="card card--soft">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-colaboracion" />
+              </svg>
+            </div>
             <h3>Colaboración</h3>
-            <p>Construir relaciones de confianza con personas, comunidades y entidades para generar transformaciones
-              sostenibles.</p>
+            <p>Construir relaciones de confianza para transformaciones sostenibles.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SERVICIOS / CAPACITACIONES -->
-    <section id="servicios" class="services">
+    <section id="servicios" class="section section--band">
       <div class="container">
-        <h2>Capacitaciones y Programas</h2>
-        <p class="services-intro">
-          Programas prácticos, basados en evidencia y adaptados a tu sector.
-        </p>
-        <div class="grid-3">
-          <article class="service-card">
+        <header class="section__head section__head--light">
+          <h2>Capacitaciones y programas</h2>
+          <p class="section__subtitle section__subtitle--light">
+            Programas prácticos, basados en evidencia y adaptados a tu sector.
+          </p>
+        </header>
+
+        <div class="grid grid--3 cards--service">
+          <article class="card card--service">
+            <div class="icon-wrap">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-pap" />
+              </svg>
+            </div>
             <h3>Promoción y prevención del suicidio</h3>
-            <p>
-              Detección temprana, factores de riesgo/protección y rutas de
-              atención.
-            </p>
+            <p>Detección temprana, factores de riesgo/protección y rutas de atención.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Primeros Auxilios Psicológicos (PAP)</h3>
-            <p>
-              Protocolo para crisis: escucha activa, contención y derivación
-              segura.
-            </p>
+            <p>Protocolo en crisis: escucha activa, contención y derivación segura.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Manejo de estrés y ansiedad</h3>
-            <p>
-              Técnicas de respiración, psicoeducación y hábitos de
-              autocuidado.
-            </p>
+            <p>Técnicas de respiración, psicoeducación y hábitos de autocuidado.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Educación afectivo-sexual</h3>
-            <p>
-              Relaciones sanas, consentimiento, límites y comunicación
-              asertiva.
-            </p>
+            <p>Relaciones sanas, consentimiento, límites y comunicación asertiva.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Prevención de SPA</h3>
             <p>Riesgos, toma de decisiones y alternativas saludables.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Mindfulness y manejo del estrés</h3>
-            <p>
-              Atención plena aplicada a la vida diaria y al entorno laboral.
-            </p>
+            <p>Atención plena aplicada a la vida diaria y al entorno laboral.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Resiliencia y afrontamiento</h3>
             <p>Estrategias para enfrentar la frustración y el cambio.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Prevención del bullying y ciberacoso</h3>
             <p>Señales de alerta, protocolos de actuación y convivencia.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Autocuidado y salud mental</h3>
             <p>Esquemas de autocuidado y cultura de bienestar.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Técnicas de motivación y refuerzo</h3>
             <p>Refuerzo positivo y reconocimiento efectivo.</p>
           </article>
-
-          <article class="service-card">
+          <article class="card card--service">
             <h3>Prevención del burnout</h3>
-            <p>
-              Riesgos psicosociales, límites saludables y balance
-              vida-trabajo.
-            </p>
+            <p>Riesgos psicosociales, límites saludables y balance vida-trabajo.</p>
+          </article>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- EQUIPO (con modal) -->
+    <section id="equipo" class="section">
+      <div class="container">
+        <header class="section__head">
+          <h2>Conoce nuestro equipo</h2>
+          <p class="section__subtitle">Profesionales con experiencia clínica, organizacional y comunitaria.</p>
+        </header>
+
+        <div class="grid grid--3 team">
+          <article class="card card--team">
+            <div class="avatar" style="--img:url('assets/img/team-01.jpg')"></div>
+            <h3>Laura Patiño</h3>
+            <p class="muted">Psicóloga Clínica · PAP y Prevención</p>
+            <button class="btn btn--primary open-profile" data-name="Laura Patiño"
+              data-role="Psicóloga Clínica · PAP y Prevención" data-img="assets/img/team-01.jpg"
+              data-desc="Atención en crisis, contención emocional y rutas seguras de derivación. 7+ años en programas comunitarios y formación a docentes."
+              data-tags="PAP,Prevención,Suicidio,Mindfulness">Más sobre mí</button>
+          </article>
+
+          <article class="card card--team">
+            <div class="avatar" style="--img:url('assets/img/team-02.jpg')"></div>
+            <h3>Andrés Gómez</h3>
+            <p class="muted">Psicólogo Organizacional · Riesgo Psicosocial</p>
+            <button class="btn btn--primary open-profile" data-name="Andrés Gómez"
+              data-role="Psicólogo Organizacional · Riesgo Psicosocial" data-img="assets/img/team-02.jpg"
+              data-desc="Diseño de programas de bienestar, medición de riesgo psicosocial y capacitación a líderes. 8+ años en entornos corporativos."
+              data-tags="Estrés,Burnout,Productividad,Clima">Más sobre mí</button>
+          </article>
+
+          <article class="card card--team">
+            <div class="avatar" style="--img:url('assets/img/team-03.jpg')"></div>
+            <h3>Camila Rojas</h3>
+            <p class="muted">Psicóloga Educativa · Convivencia & SPA</p>
+            <button class="btn btn--primary open-profile" data-name="Camila Rojas"
+              data-role="Psicóloga Educativa · Convivencia & SPA" data-img="assets/img/team-03.jpg"
+              data-desc="Intervenciones psicoeducativas, mediación escolar y prevención de consumo. Trabajo con familias y docentes."
+              data-tags="Bullying,Ciberacoso,SPA,Escuela">Más sobre mí</button>
           </article>
         </div>
       </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="cta-band">
-      <form id="contactoForm" class="contact-form" action="/send.php" method="POST" novalidate>
-        <div class="grid-4">
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" placeholder="Tu nombre" required />
+    <section id="contacto" class="section section--tint">
+      <div class="container">
+        <header class="section__head">
+          <h2>Contáctanos</h2>
+          <p class="section__subtitle">Cuéntanos tus necesidades y diseñamos la ruta juntos.</p>
+        </header>
+
+        <form class="form">
+          <div class="grid grid--2">
+            <label class="field">
+              <span>Nombre</span>
+              <input type="text" placeholder="Tu nombre" required />
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" placeholder="tunombre@email.com" required />
+            </label>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="tunombre@email.com" required />
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input id="telefono" name="telefono" type="tel" placeholder="+57 3xx xxx xxxx" required />
-          <small id="telefono-error" style="color: red; display: none">Solo se permiten números.</small>
-        </div>
-
-        <div class="form-group">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" rows="5"
-            placeholder="Cuéntanos brevemente tus necesidades (capacitaciones, PAP, burnout, etc.)…"
-            required></textarea>
-        </div>
-
-        <div class="form-foot">
-          <label class="checkbox">
-            <input type="checkbox" required />
-            Acepto la política de tratamiento de datos.
+          <label class="field">
+            <span>Teléfono</span>
+            <input type="tel" placeholder="+57 3xx xxx xxxx" required pattern="[0-9+ ]+" />
           </label>
-          <button class="btn btn-primary" type="submit">Enviar</button>
-        </div>
-      </form>
+
+          <label class="field">
+            <span>Mensaje</span>
+            <textarea rows="5" placeholder="Capacitaciones, PAP, burnout, etc." required></textarea>
+          </label>
+
+          <div class="form__foot">
+            <label class="check">
+              <input type="checkbox" required />
+              <span>Acepto la política de tratamiento de datos</span>
+            </label>
+            <button class="btn btn--primary" type="submit">Enviar</button>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Sobre CREACIÓN MENTAL</h4>
-          <p>
-            Consultoría y acompañamiento psicológico para promover la salud
-            mental, el autocuidado y la resiliencia en personas, comunidades y
-            entidades.
-          </p>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4>Sobre CREACIÓN MENTAL</h4>
+        <p>Consultoría y acompañamiento psicológico para promover la salud mental, el autocuidado y la resiliencia.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="list">
+          <li><a href="mailto:psicocreacionmental@gmail.com">psicocreacionmental@gmail.com</a></li>
+          <li><a href="https://wa.me/573045223592" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul class="list">
+          <li><a href="https://www.instagram.com/creacionmental?igsh=aml5c2YwcWd2MXFo" target="_blank"
+              rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy">© 2025 CREACIÓN MENTAL. Todos los derechos reservados.</p>
+  </footer>
 
-        <div class="footer-col footer-links">
-          <h4>Contacto</h4>
-          <ul class="contact-list">
-            <li>
-              <a href="mailto:psicocreacionmental@gmail.com">psicocreacionmental@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://wa.me/573045223592" target="_blank" rel="noopener">WhatsApp</a>
-            </li>
-          </ul>
+  <!-- Modal reutilizable -->
+  <dialog id="profileModal" class="modal" aria-label="Perfil">
+    <form method="dialog" class="modal__card">
+      <button class="modal__close" aria-label="Cerrar">✕</button>
+      <div class="modal__grid">
+        <div class="modal__media">
+          <img id="mImg" alt="" />
         </div>
-
-        <div class="footer-col footer-links">
-          <h4>Síguenos</h4>
-          <div class="socials">
-            <a href="https://www.instagram.com/creacionmental?igsh=aml5c2YwcWd2MXFo" target="_blank" rel="noopener">Instagram</a>
+        <div class="modal__body">
+          <h3 id="mName"></h3>
+          <p id="mRole" class="muted"></p>
+          <p id="mDesc"></p>
+          <ul id="mTags" class="tags"></ul>
+          <div class="actions">
+            <a class="btn btn--primary" href="#contacto">Contactar</a>
+            <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
           </div>
         </div>
       </div>
+    </form>
+  </dialog>
 
-      <div class="footer-bottom">
-        © 2025 CREACIÓN MENTAL. Todos los derechos reservados.
-      </div>
-    </div>
-  </footer>
+  <a class="wapp" href="https://wa.me/573045223592" target="_blank" aria-label="WhatsApp">
+    <img src="assets/img/wapp.png" alt="" />
+  </a>
 
-  <!-- Si tu JS maneja navegación por data-target, puedes conservar este script -->
-  <script src="/assets/js/main.js"></script>
+<script>
+  // ====== Menú (desktop + mobile) ======
+  const nav = document.getElementById('primaryNav');
+  const btn = document.querySelector('.nav-toggle');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav--open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.classList.toggle('nav-open', isOpen);
+  });
+
+  // Cerrar el panel móvil al elegir una sección (útil en móvil)
+  nav?.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      nav.classList.remove('nav--open');
+      document.body.classList.remove('nav-open');
+      btn?.setAttribute('aria-expanded', 'false');
+    })
+  );
+  // Si NO quieres que se cierre al hacer click, comenta el bloque anterior.
+
+  // ====== Header compacto con scroll ======
+  const headerEl = document.querySelector('.site-header');
+  const onScroll = () => headerEl?.classList.toggle('is-scrolled', (window.scrollY || 0) > 10);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ====== Active link (IntersectionObserver) ======
+  const links = Array.from(document.querySelectorAll('.nav__link')); // <-- bug resuelto
+  const linkById = new Map(links.map(a => [a.getAttribute('href')?.replace('#', ''), a]));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        links.forEach(l => l.classList.remove('is-active'));
+        linkById.get(id)?.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+
+  document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
+
+  // ====== Scroll suave con offset del header (anclas internas) ======
+  (function () {
+    const offset = () => (headerEl?.offsetHeight || 0);
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.pageYOffset - offset();
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.pushState(null, "", "#" + id);
+      });
+    });
+
+    // Ajusta al cargar con hash o cambiarlo manualmente
+    function scrollToHash() {
+      const id = decodeURIComponent(location.hash.replace('#', ''));
+      const el = id && document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - offset();
+      window.scrollTo({ top: y });
+    }
+    window.addEventListener('hashchange', scrollToHash);
+    window.addEventListener('load', () => setTimeout(scrollToHash, 0));
+  })();
+
+  // ====== Modal “equipo” ======
+  const modal = document.getElementById('profileModal');
+  const mImg  = document.getElementById('mImg');
+  const mName = document.getElementById('mName');
+  const mRole = document.getElementById('mRole');
+  const mDesc = document.getElementById('mDesc');
+  const mTags = document.getElementById('mTags');
+
+  document.querySelectorAll('.open-profile').forEach(btn => {
+    btn.addEventListener('click', () => {
+      mImg.src = btn.dataset.img || '';
+      mImg.alt = btn.dataset.name || '';
+      mName.textContent = btn.dataset.name || '';
+      mRole.textContent = btn.dataset.role || '';
+      mDesc.textContent = btn.dataset.desc || '';
+      mTags.innerHTML = '';
+      (btn.dataset.tags || '').split(',').filter(Boolean).forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t.trim();
+        mTags.appendChild(li);
+      });
+      modal.showModal();
+      document.body.classList.add('no-scroll');
+    });
+  });
+  modal?.addEventListener('close', () => document.body.classList.remove('no-scroll'));
+</script>
+
 </body>
 
 </html>

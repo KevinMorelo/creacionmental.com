@@ -203,6 +203,72 @@
         </ul>
       </div>
     </section>
+    <section id="servicios" class="section services" data-section="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <header class="section__head">
+          <h2 id="servicios-title">SERVICIOS</h2>
+          <p class="section__subtitle">Capacitaciones, talleres y programas a medida</p>
+        </header>
+
+        <ul class="services__grid" role="list">
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/Promociónyprevencióndelsuicidio.jpeg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Promoción y prevención del suicidio</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/pap.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Primeros Auxilios Psicológicos (PAP)</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/estresyansiedad.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Manejo del estrés y ansiedad</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/afectivosexual.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Educación afectivo sexual y relaciones sanas</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/consumosustancias.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Prevención del consumo de sustancias psicoactivas</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/Mindfulness.jpeg" alt="" loading="lazy" width="56" height="56"></div>
+
+            <div><h3>Mindfulness y manejo del estrés</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/resiliencia.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Resiliencia y afrontamiento de la frustración</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/bullying.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Prevención del bullying y el ciberacoso</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/Autocuidado.jpeg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Autocuidado y salud mental, fortalecimiento de los esquemas</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/tecnicasmotivacion.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Técnicas de motivación y refuerzo positivo</h3></div>
+          </li>
+
+          <li class="service-card">
+            <div class="service__icon"><img src="assets/img/burnout.jpg" alt="" loading="lazy" width="56" height="56"></div>
+            <div><h3>Prevención del burnout</h3></div>
+          </li>
+        </ul>
+      </div>
+    </section>
     <section id="contacto" class="section section--tint">
       <div class="container">
         <header class="section__head">
@@ -248,8 +314,12 @@
       <form method="dialog" class="modal__card">
         <button class="modal__close" aria-label="Cerrar">✕</button>
         <div class="modal__body">
-          <h3 id="mvTitle"></h3>
-          <p id="mvText" style="margin: 0.4rem 0 0"></p>
+<h3 id="mvTitle"></h3>
+<p id="mvText" style="margin: 0.4rem 0 1rem"></p>
+<div class="modal__actions">
+  <a href="#contacto" class="btn btn--primary">Ir al formulario</a>
+  <a href="https://wa.me/573045223592" target="_blank" rel="noopener" class="btn btn--ghost">WhatsApp</a>
+</div>
         </div>
       </form>
     </dialog>
@@ -426,6 +496,44 @@
         });
       });
     })();
+(() => {
+  const modal   = document.getElementById("infoModal");
+  const titleEl = document.getElementById("mvTitle");
+  const textEl  = document.getElementById("mvText");
+  const actions = modal ? modal.querySelector(".modal__actions") : null;
+
+  // --- Abrir desde SERVICIOS -> mostrar botones
+  document.querySelectorAll(".service-card").forEach(card => {
+    card.setAttribute("role","button");
+    card.setAttribute("tabindex","0");
+
+    const openFromService = () => {
+      const t = card.querySelector("h3")?.textContent?.trim() || "Servicio";
+      if (actions) actions.hidden = false;           // <-- mostrar
+      titleEl.textContent = t;
+      textEl.textContent  = "¿Te interesa este servicio? Elige una opción para contactarnos:";
+      modal.showModal();
+      document.body.classList.add("no-scroll");
+    };
+
+    card.addEventListener("click", openFromService);
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFromService(); }
+    });
+  });
+
+  document.querySelectorAll("#nosotros .mv-card .btn").forEach(btn => {
+    btn.addEventListener("click", () => { if (actions) actions.hidden = true; }, { capture:true });
+    btn.addEventListener("keydown", e => {
+      if ((e.key === "Enter" || e.key === " ") && actions) actions.hidden = true;
+    }, { capture:true });
+  });
+
+  modal?.addEventListener("close", () => {
+    document.body.classList.remove("no-scroll");
+    if (actions) actions.hidden = false;
+  });
+})();
   </script>
 </body>
 

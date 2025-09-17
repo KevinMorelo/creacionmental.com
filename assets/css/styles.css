@@ -245,7 +245,7 @@ main section[id]{scroll-margin-top: calc(var(--header-h) + 10px);}
   background:
     linear-gradient(180deg, rgba(145,95,245,.06), transparent 42%) top/100% 180px no-repeat;
 }
-.values .section__head h2{ color: var(--gold); letter-spacing:.02em; }
+.values .section__head h2{ color: var(--gold); letter-spacing:.02em; text-align: center; }
 .values .section__subtitle{ color:#ffffff; }
 
 .values__grid{
@@ -331,6 +331,7 @@ main section[id]{scroll-margin-top: calc(var(--header-h) + 10px);}
 .values .section__subtitle{
   font-size: .98rem;
   opacity: .95;
+  text-align: center;
 }
 
 .values__grid{
@@ -377,7 +378,6 @@ main section[id]{scroll-margin-top: calc(var(--header-h) + 10px);}
 .about .mv-card p + .btn{
   margin-top: 12px;
 }
-
 @media (max-width: 768px){
   .about .mv-card .btn{ 
     padding: .75rem .95rem;
@@ -388,7 +388,6 @@ main section[id]{scroll-margin-top: calc(var(--header-h) + 10px);}
 .section__head h2 + .section__subtitle{ margin-top: .3rem; }
 
 
-/* === Center mission/vision buttons (robust) === */
 #nosotros .mv-card > div{
   display: grid;
   justify-items: center;   /* centra título, texto e inline elements */
@@ -402,3 +401,150 @@ main section[id]{scroll-margin-top: calc(var(--header-h) + 10px);}
     text-align: center;   /* textos centrados */
   }
 }
+
+/* ===== SERVICIOS ===== */
+.services .section__head{ text-align:center; }
+.services .section__head h2{ margin:0; color: var(--deep);}
+.services .section__subtitle{ margin-top:.35rem; }
+
+.services__grid{
+  display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:14px; align-items:stretch; list-style:none; padding-left:0; margin:0;
+}
+
+.service-card{
+  display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center;
+  background:#fff; border:1px solid rgba(0,0,0,.12);
+  border-radius:20px; padding:14px; box-shadow:0 10px 28px rgba(0,0,0,.12);
+  position:relative; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.service-card::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
+  border-radius:20px 0 0 20px;
+}
+.service-card:hover{ transform:translateY(-2px); border-color:rgba(145,95,245,.28); box-shadow:0 16px 36px rgba(0,0,0,.18); }
+
+.service__icon{
+  display:grid; place-items:center; width:56px; height:56px; border-radius:14px;
+  background: radial-gradient(circle at 30% 30%, rgba(145,95,245,.18), transparent 60%), rgba(145,95,245,.10);
+  border:1px solid rgba(145,95,245,.25); box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+  overflow:hidden;
+}
+.service__icon img{ width:36px; height:36px; object-fit:contain; display:block; }
+
+.service-card h3{
+  margin:0; font-size:1.02rem; font-weight:800; color:#291C64; line-height:1.3;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .services__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+  .service__icon{ width:52px; height:52px; }
+  .service__icon img{ width:32px; height:32px; }
+}
+@media (max-width: 680px){
+  .services__grid{ grid-template-columns: 1fr; gap:12px; }
+  .service-card{ padding:12px; border-radius:14px; }
+  .service-card::before{ border-radius:14px 0 0 14px; }
+  .service__icon{ width:48px; height:48px; }
+  .service__icon img{ width:30px; height:30px; }
+}
+
+/* Performance */
+@supports (content-visibility: auto){
+  .services{ content-visibility:auto; contain-intrinsic-size: 860px; }
+}
+
+
+/* ===== SERVICIOS · Pro UX v2 ===== */
+.services{
+  position: relative;
+  overflow: hidden;
+}
+/* soft gradient cap like other sections */
+.services::before{
+  content:""; position:absolute; inset:0 0 auto 0; height: 180px;
+  background: linear-gradient(180deg, rgba(145,95,245,.06), transparent 60%);
+  z-index:0;
+}
+.services > .container{ position: relative; z-index: 1; }
+.services .section__head{ text-align:center; margin-bottom: 12px; }
+.services .section__head h2{ letter-spacing: .02em; }
+.services .section__head .section__subtitle{ color:#607080; }
+
+/* Grid tuning */
+.services__grid{
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+
+/* Card polish */
+.service-card{
+  backdrop-filter: blur(2px);
+  background: color-mix(in srgb, #fff 92%, var(--gold) 8%);
+  border: 1px solid rgba(145,95,245,.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+  touch-action: manipulation;
+}
+.service-card h3{
+  text-wrap: balance;
+  letter-spacing: .01em;
+  color: #291C64;
+}
+
+/* Icon micro-interaction */
+.service-card:hover .service__icon{ transform: scale(1.02); }
+.service__icon{ transition: transform .18s ease; }
+
+/* Keyboard focus */
+.service-card:focus-within{
+  outline: 3px solid color-mix(in srgb, var(--deep) 40%, white);
+  outline-offset: 2px;
+}
+
+/* Mobile/Tablet */
+@media (max-width: 980px){
+  .services__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .service-card{ padding: 12px; border-radius: 16px; }
+  .service-card::before{ border-radius: 16px 0 0 16px; }
+}
+@media (max-width: 680px){
+  .services__grid{ grid-template-columns: 1fr; gap: 12px; }
+  .service-card{ padding: 12px; border-radius: 14px; }
+  .service-card h3{ font-size: 1rem; line-height: 1.28; }
+  /* Clamp long titles to 2 lines so cards no se estiren demasiado */
+  .service-card h3{
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  }
+  .service__icon{ width: 48px; height: 48px; }
+  .service__icon img{ width: 30px; height: 30px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .service__icon{ transition: none; }
+  .service-card:hover{ transform: none; box-shadow: 0 10px 28px rgba(0,0,0,.12); }
+}
+
+/* Footer de acciones en el diálogo */
+.modal__actions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: .5rem;
+}
+.modal__actions .btn{
+  width: 100%;
+  text-align: center;
+}
+/* Mejor contraste del "ghost" sobre fondo blanco del diálogo */
+.modal__actions .btn.btn--ghost{
+  color: var(--deep);
+  background: rgba(145,95,245,.08);
+  border-color: rgba(145,95,245,.25);
+}
+
+/* Evita hacer scroll del body cuando el dialog está abierto */
+body.no-scroll{ overflow: hidden; }
+
+.modal__actions[hidden]{ display:none !important; }

@@ -82,7 +82,7 @@
             </p>
           </div>
           <figure class="about__media">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+            <img src="/assets/img/Imagenprincipal.jpeg"
               alt="Equipo facilitando una sesión de bienestar" loading="lazy" />
           </figure>
           <div class="about__mv">
@@ -268,6 +268,65 @@
         </ul>
       </div>
     </section>
+<section id="equipo" class="team">
+  <div class="team__inner">
+    <header class="team__header">
+      <h2 class="team__title">Nuestro equipo</h2>
+      <p class="team__subtitle">Personas detrás de Creación Mental.</p>
+    </header>
+
+    <div class="team__grid">
+      <!-- Tarjeta 1 -->
+      <article class="team-card">
+        <div class="team-card__avatar">
+          <img src="assets/img/IMG_4313.jpg" alt="Nataly Palacios S." loading="lazy">
+        </div>
+        <div class="team-card__body">
+          <h3 class="team-card__name">Nataly Palacios S.</h3>
+          <p class="team-card__role">Psicóloga · Esp. Promoción Psicosocial en Salud</p>
+          <p class="team-card__bio">
+            Fullstack con visión emprendedora. Transformo ideas en productos medibles,
+            con obsesión por la optimización, la experiencia de usuario y la integración tecnológica.
+          </p>
+
+          <button class="btn open-profile"
+            data-img="assets/img/IMG_4313.jpg"
+            data-name="Nataly Palacios S."
+            data-role="Psicóloga · Esp. Promoción Psicosocial en Salud"
+            data-desc="Fullstack con visión emprendedora. Disfruto transformar ideas en productos digitales medibles, con foco en performance, UX e integración tecnológica."
+            data-tags="Java, JavaScript, Node.js, PostgreSQL, AWS, Docker, CI/CD, Angular, Python, JUnit">
+            ¡Más sobre mí!
+          </button>
+        </div>
+      </article>
+
+      <!-- Tarjeta 2 -->
+      <article class="team-card">
+        <div class="team-card__avatar">
+          <img src="assets/img/IMG_4318.jpg" alt="Rita Anaya S." loading="lazy">
+        </div>
+        <div class="team-card__body">
+          <h3 class="team-card__name">Rita Anaya S.</h3>
+          <p class="team-card__role">Psicóloga · Esp. Promoción Psicosocial en Salud</p>
+          <p class="team-card__bio">
+            Frontend orientado a producto y performance. Construyo interfaces accesibles y
+            escalables con foco en mantenibilidad y detalle visual.
+          </p>
+
+          <button class="btn open-profile"
+            data-img="assets/img/IMG_4318.jpg"
+            data-name="Rita Anaya S."
+            data-role="Psicóloga · Esp. Promoción Psicosocial en Salud"
+            data-desc="Frontend con enfoque en performance y accesibilidad. Me apasiona crear UI limpias y mantenibles."
+            data-tags="Angular, TypeScript, RxJS, JavaScript, HTML, CSS, Testing, UX, Web Vitals">
+            ¡Más sobre mí!
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
     <section id="contacto" class="section section--tint">
       <div class="container">
         <header class="section__head">
@@ -382,158 +441,190 @@
     <img src="assets/img/wapp.png" alt="" />
   </a>
 
-  <script>
-    const nav = document.getElementById("primaryNav");
-    const btn = document.querySelector(".nav-toggle");
+<script>
+  const nav = document.getElementById("primaryNav");
+  const btn = document.querySelector(".nav-toggle");
 
-    btn?.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("nav--open");
-      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      document.body.classList.toggle("nav-open", isOpen);
-    });
+  // --- NUEVO: función centralizada para cerrar el menú
+  function closeNav() {
+    nav?.classList.remove("nav--open");
+    document.body.classList.remove("nav-open");
+    btn?.setAttribute("aria-expanded", "false");
+  }
 
-    nav?.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        nav.classList.remove("nav--open");
-        document.body.classList.remove("nav-open");
-        btn?.setAttribute("aria-expanded", "false");
-      })
-    );
-    const headerEl = document.querySelector(".site-header");
-    const onScroll = () =>
-      headerEl?.classList.toggle("is-scrolled", (window.scrollY || 0) > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+  btn?.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("nav--open");
+    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    document.body.classList.toggle("nav-open", isOpen);
+  });
 
-    const links = Array.from(document.querySelectorAll(".nav__link"));
-    const linkById = new Map(
-      links.map((a) => [a.getAttribute("href")?.replace("#", ""), a])
-    );
+  // Usa closeNav en los links del nav
+  nav?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => closeNav())
+  );
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const id = e.target.id;
-            links.forEach((l) => l.classList.remove("is-active"));
-            linkById.get(id)?.classList.add("is-active");
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
+  // --- NUEVO: cerrar al hacer click fuera del nav / botón
+  document.addEventListener("click", (e) => {
+    if (!nav?.classList.contains("nav--open")) return;
+    const t = e.target;
+    if (nav.contains(t) || btn?.contains(t)) return;
+    closeNav();
+  });
 
-    document
-      .querySelectorAll("main section[id]")
-      .forEach((s) => io.observe(s));
-    (function () {
-      const offset = () => headerEl?.offsetHeight || 0;
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
-        a.addEventListener("click", (e) => {
-          const id = a.getAttribute("href").slice(1);
-          const el = document.getElementById(id);
-          if (!el) return;
-          e.preventDefault();
-          const y =
-            el.getBoundingClientRect().top + window.pageYOffset - offset();
-          window.scrollTo({ top: y, behavior: "smooth" });
-          history.pushState(null, "", "#" + id);
-        });
+  // --- NUEVO: cerrar con Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeNav();
+  });
+
+  // --- NUEVO: cerrar al redimensionar/orientación (evita estados trabados)
+  window.addEventListener("resize", closeNav, { passive: true });
+  window.addEventListener("orientationchange", closeNav);
+
+  const headerEl = document.querySelector(".site-header");
+  const onScroll = () =>
+    headerEl?.classList.toggle("is-scrolled", (window.scrollY || 0) > 10);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const links = Array.from(document.querySelectorAll(".nav__link"));
+  const linkById = new Map(
+    links.map((a) => [a.getAttribute("href")?.replace("#", ""), a])
+  );
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          links.forEach((l) => l.classList.remove("is-active"));
+          linkById.get(id)?.classList.add("is-active");
+        }
       });
-      function scrollToHash() {
-        const id = decodeURIComponent(location.hash.replace("#", ""));
-        const el = id && document.getElementById(id);
+    },
+    { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+  );
+
+  document
+    .querySelectorAll("main section[id]")
+    .forEach((s) => io.observe(s));
+
+  (function () {
+    const offset = () => headerEl?.offsetHeight || 0;
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href").slice(1);
+        const el = document.getElementById(id);
         if (!el) return;
+        e.preventDefault();
+
+        // --- NUEVO: asegúrate de cerrar el menú ANTES del scroll
+        closeNav();
+
         const y =
           el.getBoundingClientRect().top + window.pageYOffset - offset();
-        window.scrollTo({ top: y });
-      }
-      window.addEventListener("hashchange", scrollToHash);
-      window.addEventListener("load", () => setTimeout(scrollToHash, 0));
-    })();
-
-    const modal = document.getElementById("profileModal");
-    const mImg = document.getElementById("mImg");
-    const mName = document.getElementById("mName");
-    const mRole = document.getElementById("mRole");
-    const mDesc = document.getElementById("mDesc");
-    const mTags = document.getElementById("mTags");
-
-    document.querySelectorAll(".open-profile").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        mImg.src = btn.dataset.img || "";
-        mImg.alt = btn.dataset.name || "";
-        mName.textContent = btn.dataset.name || "";
-        mRole.textContent = btn.dataset.role || "";
-        mDesc.textContent = btn.dataset.desc || "";
-        mTags.innerHTML = "";
-        (btn.dataset.tags || "")
-          .split(",")
-          .filter(Boolean)
-          .forEach((t) => {
-            const li = document.createElement("li");
-            li.textContent = t.trim();
-            mTags.appendChild(li);
-          });
-        modal.showModal();
-        document.body.classList.add("no-scroll");
+        window.scrollTo({ top: y, behavior: "smooth" });
+        history.pushState(null, "", "#" + id);
       });
     });
-    modal?.addEventListener("close", () =>
-      document.body.classList.remove("no-scroll")
-    );
-    (() => {
-      const dlg = document.getElementById("infoModal");
-      const t = document.getElementById("mvTitle");
-      const p = document.getElementById("mvText");
+    function scrollToHash() {
+      const id = decodeURIComponent(location.hash.replace("#", ""));
+      const el = id && document.getElementById(id);
+      if (!el) return;
+      const y =
+        el.getBoundingClientRect().top + window.pageYOffset - offset();
+      window.scrollTo({ top: y });
+    }
+    window.addEventListener("hashchange", scrollToHash);
+    window.addEventListener("load", () => setTimeout(scrollToHash, 0));
+  })();
 
-      document.querySelectorAll(".open-mv").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          t.textContent = btn.dataset.title || "";
-          p.textContent = btn.dataset.full || "";
-          dlg.showModal();
+  // --- Perfil (igual que tenías)
+  const modal = document.getElementById("profileModal");
+  const mImg = document.getElementById("mImg");
+  const mName = document.getElementById("mName");
+  const mRole = document.getElementById("mRole");
+  const mDesc = document.getElementById("mDesc");
+  const mTags = document.getElementById("mTags");
+
+  document.querySelectorAll(".open-profile").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      mImg.src = btn.dataset.img || "";
+      mImg.alt = btn.dataset.name || "";
+      mName.textContent = btn.dataset.name || "";
+      mRole.textContent = btn.dataset.role || "";
+      mDesc.textContent = btn.dataset.desc || "";
+      mTags.innerHTML = "";
+      (btn.dataset.tags || "")
+        .split(",")
+        .filter(Boolean)
+        .forEach((t) => {
+          const li = document.createElement("li");
+          li.textContent = t.trim();
+          mTags.appendChild(li);
         });
-      });
-    })();
-(() => {
-  const modal   = document.getElementById("infoModal");
-  const titleEl = document.getElementById("mvTitle");
-  const textEl  = document.getElementById("mvText");
-  const actions = modal ? modal.querySelector(".modal__actions") : null;
-
-  // --- Abrir desde SERVICIOS -> mostrar botones
-  document.querySelectorAll(".service-card").forEach(card => {
-    card.setAttribute("role","button");
-    card.setAttribute("tabindex","0");
-
-    const openFromService = () => {
-      const t = card.querySelector("h3")?.textContent?.trim() || "Servicio";
-      if (actions) actions.hidden = false;           // <-- mostrar
-      titleEl.textContent = t;
-      textEl.textContent  = "¿Te interesa este servicio? Elige una opción para contactarnos:";
       modal.showModal();
       document.body.classList.add("no-scroll");
-    };
-
-    card.addEventListener("click", openFromService);
-    card.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFromService(); }
     });
   });
+  modal?.addEventListener("close", () =>
+    document.body.classList.remove("no-scroll")
+  );
 
-  document.querySelectorAll("#nosotros .mv-card .btn").forEach(btn => {
-    btn.addEventListener("click", () => { if (actions) actions.hidden = true; }, { capture:true });
-    btn.addEventListener("keydown", e => {
-      if ((e.key === "Enter" || e.key === " ") && actions) actions.hidden = true;
-    }, { capture:true });
-  });
+  // --- Info modal desde tarjetas "M/V"
+  (() => {
+    const dlg = document.getElementById("infoModal");
+    const t = document.getElementById("mvTitle");
+    const p = document.getElementById("mvText");
 
-  modal?.addEventListener("close", () => {
-    document.body.classList.remove("no-scroll");
-    if (actions) actions.hidden = false;
-  });
-})();
-  </script>
+    document.querySelectorAll(".open-mv").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        t.textContent = btn.dataset.title || "";
+        p.textContent = btn.dataset.full || "";
+        dlg.showModal();
+      });
+    });
+  })();
+
+  // --- Servicios -> InfoModal con acciones
+  (() => {
+    const modal   = document.getElementById("infoModal");
+    const titleEl = document.getElementById("mvTitle");
+    const textEl  = document.getElementById("mvText");
+    const actions = modal ? modal.querySelector(".modal__actions") : null;
+
+    document.querySelectorAll(".service-card").forEach(card => {
+      card.setAttribute("role","button");
+      card.setAttribute("tabindex","0");
+
+      const openFromService = () => {
+        const t = card.querySelector("h3")?.textContent?.trim() || "Servicio";
+        if (actions) actions.hidden = false;
+        titleEl.textContent = t;
+        textEl.textContent  = "¿Te interesa este servicio? Elige una opción para contactarnos:";
+        modal.showModal();
+        document.body.classList.add("no-scroll");
+      };
+
+      card.addEventListener("click", openFromService);
+      card.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFromService(); }
+      });
+    });
+
+    document.querySelectorAll("#nosotros .mv-card .btn").forEach(btn => {
+      btn.addEventListener("click", () => { if (actions) actions.hidden = true; }, { capture:true });
+      btn.addEventListener("keydown", e => {
+        if ((e.key === "Enter" || e.key === " ") && actions) actions.hidden = true;
+      }, { capture:true });
+    });
+
+    modal?.addEventListener("close", () => {
+      document.body.classList.remove("no-scroll");
+      if (actions) actions.hidden = false;
+    });
+  })();
+</script>
+
 </body>
 
 </html>
